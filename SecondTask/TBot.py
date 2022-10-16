@@ -1,6 +1,6 @@
 import Image
-import telebot
-from telebot import types
+import telegram
+from telegram.ext import Updater, CommandHandler
 
 
 def prepare_token(filename):
@@ -10,13 +10,14 @@ def prepare_token(filename):
     return token
 
 ttoken=prepare_token('ttoken.txt')
-bot=telebot.TeleBot(ttoken)
-    
-@bot.message_handler(commands=['start'])
-def start(message):
-    bot.send_photo(message.from_user.id, photo=Image.prepare_data_for_send("Cat.jpg"))
+bot=Updater(ttoken)
+dispatcher=bot.dispatcher
 
-try:
-    bot.polling(none_stop=True, interval=0)
-except KeyboardInterrupt:
-    sys.exit()
+def start(update, context):
+    context.bot.send_photo(update.effective_chat.id, photo=Image.prepare_data_for_send("Cat.jpg"))
+
+start_handler=CommandHandler('start', start)
+dispatcher.add_handler(start_handler)
+
+bot.start_polling()
+bot.idle()
