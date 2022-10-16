@@ -38,10 +38,13 @@ def action_officer_precondition(officers, x, y, array, wolfs):
         elif(dx==0):
             if(dy==1):
                 b=officer_action(officers, wolfs, array, x ,y, 0)
-        else:
+        elif(dx!=0 and dy!=0):
             if(dx==1 and dy==1):
                 b=officer_action(officers, wolfs, array, x ,y, 1)
+        else:
+            print("Некорректный ход! Офицер может ходить на одну клетку вокруг себя!")
+            return [False, 1]
     else:
         print("Некорректный ход! Офицер может ходить на одну клетку вокруг себя!")
-        return [False, []]
+        return [False, 1]
     return [True, b]

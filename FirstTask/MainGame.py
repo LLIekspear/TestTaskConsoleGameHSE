@@ -99,6 +99,9 @@ while checkGameState(wolfs):
             if(b==0):
                 print("Некорректный ход! Офицер может атаковать только по диагонали!")
                 flag=False
+            elif(b==1):
+                print("Некорректный ход! Офицер может ходить только на одну клетку вокруг себя!")
+                flag=False
             else:
                 a=b[0]
                 officers=b[1]

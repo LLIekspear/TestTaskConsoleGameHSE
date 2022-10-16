@@ -40,4 +40,7 @@ def action_horse_precondition(horses, x, y, array, wolfs):
         else:
             print("Некорректный ход! Конь может ходить только буквой Г!")
             return [False, []]
+    else:
+        print("Некорректный ход! Конь может ходить только буквой Г!")
+        return [False, []]
     return [True, b]
