@@ -1,4 +1,4 @@
-# TestTaskConsoleGameHSE
+# Тестовое задание на Phython разработчика для Exo World
 
 ## Первое задание
 
